@@ -17,7 +17,8 @@
       <option value="javascript">JAVA SCRIPT</option>
     </b-form-select>
     <p></p>
-    <b-button ref="bFetchButton" v-if="selected != null" variant="success" @click="callListRestService()">Click to fetch top 10
+    <b-button ref="bFetchButton" v-if="selected != null" variant="success" @click="callListRestService()">Click to fetch
+      top 10
       repositories in GitHub
     </b-button>
     <p></p>
@@ -45,6 +46,8 @@
 import axios from 'axios'
 
 export default {
+  name: 'service',
+
   data () {
     return {
       selected: null,
