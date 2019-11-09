@@ -1,5 +1,5 @@
 <template>
-  <div class="bootstrap ml-3 mr-3">
+  <div class="service">
     <p></p>
     <h6 id="topHeader">
       <b-badge variant="primary"> Let´s go!</b-badge>
