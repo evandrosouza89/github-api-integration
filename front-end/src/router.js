@@ -7,10 +7,14 @@ Vue.use(Router);
 const router = new Router({
   mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
   routes: [
-    { path: '/', component: Service },
+    {path: '/', component: Service},
     // otherwise redirect to home
-    { path: '*', redirect: '/' }
+    {path: '*', redirect: '/'}
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  next();
 });
 
 export default router;
