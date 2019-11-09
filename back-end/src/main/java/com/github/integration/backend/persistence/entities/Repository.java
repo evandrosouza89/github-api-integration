@@ -30,6 +30,7 @@ public class Repository {
 
     private String htmlUrl;
 
+    @Column(columnDefinition="text")
     private String description;
 
     private Boolean fork;
