@@ -9,18 +9,13 @@
     <p></p>
     <img src="./assets/vue.png">
     <img src="./assets/spring.png">
+    <router-view></router-view>
   </div>
-  <router-view></router-view>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to your Vue.js powered Spring Boot App'
-    }
-  }
+  name: 'app'
 }
 </script>
 
