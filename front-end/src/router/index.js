@@ -4,12 +4,11 @@ import Service from '@/components/Service'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
   routes: [
-    {
-      path: '/',
-      name: 'Service',
-      component: Service
-    }
+    { path: '/', component: Service },
+    // otherwise redirect to home
+    { path: '*', redirect: '/' }
   ]
-})
+});
