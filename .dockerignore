@@ -1,6 +1,0 @@
-# exclude underlying OS specific node modules
-front-end/node*
-
-# also leave out pre-build output folders
-front-end/target
-back-end/target

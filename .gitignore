@@ -19,6 +19,7 @@ target
 .idea
 *.iml
 *.log
+*.editorconfig
 
 # VSCode
 .vscode
@@ -26,11 +27,10 @@ target
 # logback
 logback.out.xml
 
-back-end/src/main/resources/public/
 back-end/target
-front-end/dist/
-front-end/node/
-front-end/node_modules/
-front-end/npm-debug.log
+front-end/build
+front-end/coverage
+front-end/node
+front-end/node_modules
 front-end/target
-front-end/test-output
+front-end/static
