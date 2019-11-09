@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Service from '@/components/Service'
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
@@ -12,3 +12,5 @@ const router = new Router({
     { path: '*', redirect: '/' }
   ]
 });
+
+export default router;
