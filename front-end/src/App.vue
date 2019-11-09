@@ -10,6 +10,7 @@
     <img src="./assets/vue.png">
     <img src="./assets/spring.png">
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
