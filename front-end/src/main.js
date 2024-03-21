@@ -1,18 +1,25 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
+import { createApp } from 'vue'
+import App from './App.vue'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.config.productionTip = false
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
-// Bootstrap
-Vue.use(BootstrapVue)
+//Vue.config.productionTip = false
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app');
+const vuetify = createVuetify({
+  components,
+  directives
+})
+
+const app = createApp(App)
+
+app.use(router)
+app.use(vuetify)
+
+app.mount('#app')

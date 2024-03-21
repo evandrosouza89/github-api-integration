@@ -1,15 +1,15 @@
 package com.github.integration.backend.common;
 
 import com.github.integration.backend.common.entities.SearchResultDTO;
-import com.github.integration.backend.persistence.entities.Repository;
-import com.github.integration.backend.rest.entities.ListRestResponse;
+import com.github.integration.backend.controller.entities.ListRestResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface DTOMapper {
 
-    ListRestResponse searchResultToListRestResponse(SearchResultDTO searchResult);
+    DTOMapper INSTANCE = Mappers.getMapper(DTOMapper.class);
 
-    Repository restRepositoryToRepository(com.github.integration.backend.rest.entities.Repository repository);
+    ListRestResponse searchResultToListRestResponse(SearchResultDTO searchResult);
 
 }

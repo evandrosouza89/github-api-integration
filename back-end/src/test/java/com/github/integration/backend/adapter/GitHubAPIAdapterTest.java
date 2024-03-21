@@ -1,76 +1,71 @@
 package com.github.integration.backend.adapter;
 
 import com.github.integration.backend.common.EnumLanguages;
+import com.github.integration.backend.common.EnumSortingBy;
 import com.github.integration.backend.common.entities.SearchResultDTO;
-import lombok.NoArgsConstructor;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
-public class GitHubAPIAdapterTest {
-
-    @InjectMocks
-    private GitHubAPIAdapter adapter;
+@ExtendWith(MockitoExtension.class)
+class GitHubAPIAdapterTest {
 
     @Mock
     private RestTemplate restTemplate;
 
-    private SearchResultDTO expectedResponse;
+    @InjectMocks
+    private GitHubAPIAdapter underTest;
 
-    private SearchResultDTO searchResultDTO;
 
-    private TestSpec testSpec;
+    @Test
+    void test_listTop10ByLanguageAndSortByStars() {
 
-    @Before
-    public void setupTetSpec() {
-        testSpec = new TestSpec();
+        // Given
+
+        final EnumLanguages language = EnumLanguages.C;
+
+        final EnumSortingBy sortingBy = EnumSortingBy.STARS;
+
+        final SearchResultDTO expectedResult = new SearchResultDTO(0, false, null);
+
+        doReturn(expectedResult).when(restTemplate)
+                .getForObject(anyString(), eq(SearchResultDTO.class));
+
+        // When
+
+        final SearchResultDTO actualResult = underTest.listTop10ByLanguageAndSortByStars(language, sortingBy);
+
+        // Then
+
+        verify(restTemplate).getForObject(anyString(), eq(SearchResultDTO.class));
+
+        assertEquals(expectedResult, actualResult);
+
     }
 
     @Test
-    public void test_listTop10ByLanguageAndSortByStars_shall_return_valid_response() {
-        testSpec.givenAValidRestTemplate()
-                .givenAValidResponse()
-                .givenRestTemplateReturnsAValidResponse()
-                .whenAdapterListTop10ByLanguageAndSortByStars()
-                .thenResponseIsValid();
+    void test_restTemplate() {
+
+        // Given
+
+        final RestTemplateBuilder builder = new RestTemplateBuilder();
+
+        // When
+
+        final RestTemplate actualResult = underTest.restTemplate(builder);
+
+        // Then
+
+        assertNotNull(actualResult);
+
     }
 
-    @NoArgsConstructor
-    private class TestSpec {
-
-        TestSpec givenAValidRestTemplate() {
-            restTemplate = adapter.getRestTemplate();
-            return this;
-        }
-
-        TestSpec givenAValidResponse() {
-            expectedResponse = SearchResultDTO.builder().totalCount(1).build();
-            return this;
-        }
-
-        TestSpec givenRestTemplateReturnsAValidResponse() {
-            when(restTemplate.getForObject(anyString(), any())).thenReturn(expectedResponse);
-            return this;
-        }
-
-        TestSpec whenAdapterListTop10ByLanguageAndSortByStars() {
-            searchResultDTO = adapter.listTop10ByLanguageAndSortByStars(EnumLanguages.C);
-            return this;
-        }
-
-        TestSpec thenResponseIsValid() {
-            assertThat(searchResultDTO).isEqualTo(expectedResponse);
-            return this;
-        }
-    }
 }

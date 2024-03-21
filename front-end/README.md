@@ -4,24 +4,34 @@
 
 ## Build Setup
 
-``` bash
-# install dependencies
+## Project Setup
+
+```sh
 npm install
+```
 
-# serve with hot reload at localhost:8080
+### Compile and Hot-Reload for Development
+
+```sh
 npm run dev
+```
 
-# build for production with minification
+### Compile and Minify for Production
+
+```sh
 npm run build
+```
 
-# build for production and view the bundle analyzer report
-npm run build --report
+### Run Unit Tests with [Vitest](https://vitest.dev/)
 
-# run unit tests
-npm run unit
+```sh
+npm run test:unit
+```
 
-# run all tests
-npm test
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

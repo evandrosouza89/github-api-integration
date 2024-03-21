@@ -6,26 +6,22 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum EnumLanguages {
+public enum EnumSortingBy {
 
-    C("c"),
-    PHP("php"),
-    JAVA("java"),
-    PYTHON("python"),
-    JAVA_SCRIPT("javascript");
+    STARS("stars"),
+    INTERACTIONS("interactions"),
+    REACTIONS("reactions");
 
     private final String value;
 
-    public static EnumLanguages getByValue(final String language) {
+    public static EnumSortingBy getByValue(final String language) {
 
-        for (final EnumLanguages enumLanguage : values()) {
+        for (final EnumSortingBy enumLanguage : values()) {
             if (enumLanguage.getValue().equalsIgnoreCase(language)) {
                 return enumLanguage;
             }
         }
 
         return null;
-
     }
-
 }
