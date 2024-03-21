@@ -4,7 +4,7 @@ This project demonstrates a backend built with Spring Boot and a frontend built 
 communication. It offers a single-page application that allows visitors to fetch the top 10 GitHub repositories given
 two filters: language (C, PHP, Java, Python, and JavaScript) and a sorting method (stars, interactions, and reactions).
 
-<p style="text-align: center;">
+<p align="center">
     <img src="/screenshot/screenshot.png" height="65%" width="65%" alt="App screenshot">
 </p>
 
